@@ -2,23 +2,23 @@
 
 * Oracle Java JDK 7
 * Android SDK r23
-* Gradle 1.10
+* Gradle 1.13
 
 #### Install
 
-You can either pull from `bprodoehl/android-dev`:
+You can either pull from `xzan/docker-android-dev`:
 
 ```
-docker pull bprodoehl/android-dev
+docker pull xzan/docker-android-dev
 ```
 
 ```
-docker run -i -t bprodoehl/android-dev /bin/bash
+docker run -i -t xzan/docker-android-dev /bin/bash
 ```
 
 or add it to your Dockerfile:
 
 ```
-FROM bprodoehl/android-dev
+FROM xzan/docker-android-dev
 ```
 
