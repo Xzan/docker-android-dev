@@ -4,7 +4,7 @@
 # Start with Ubuntu 14.04 LTS.
 FROM phusion/baseimage
 
-MAINTAINER Brian Prodoehl <bprodoehl@connectify.me>
+MAINTAINER Xzan <xzan@xzan.be>
 
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,25 +25,25 @@ RUN apt-get update
 RUN apt-get -y install oracle-java7-installer
 
 # Install android sdk
-RUN wget http://dl.google.com/android/android-sdk_r23-linux.tgz
-RUN tar -xvzf android-sdk_r23-linux.tgz
+RUN wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+RUN tar -xvzf android-sdk_r24.4.1-linux.tgz
 RUN mv android-sdk-linux /usr/local/android-sdk
-RUN rm android-sdk_r23-linux.tgz
+RUN rm android-sdk_r24.4.1-linux.tgz
 
 # Install Android tools
-RUN echo y | /usr/local/android-sdk/tools/android update sdk --filter platform,tool,platform-tool,extra,addon-google_apis-google-19,addon-google_apis_x86-google-19,build-tools-19.1.0 --no-ui -a
+RUN echo y | /usr/local/android-sdk/tools/android update sdk --filter platform,tool,platform-tool,extra,add-on,addon-google_apis-google-19,addon-google_apis_x86-google-19,build-tools-23.0.1,build-tools-23.0.2,build-tools-23.0.3 --no-ui -a
 
 # Install Android NDK
-RUN wget https://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2
-RUN tar -xvjf android-ndk-r9d-linux-x86_64.tar.bz2
-RUN mv android-ndk-r9d /usr/local/android-ndk
-RUN rm android-ndk-r9d-linux-x86_64.tar.bz2
+RUN wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
+RUN unzip -o android-ndk-r11c-linux-x86_64.zip
+RUN mv android-ndk-r11c /usr/local/android-ndk
+RUN rm android-ndk-r11c-linux-x86_64.zip
 
 # Install Gradle
-RUN wget https://downloads.gradle.org/distributions/gradle-1.10-bin.zip
-RUN unzip gradle-1.10-bin.zip
-RUN mv gradle-1.10 /usr/local/gradle
-RUN rm gradle-1.10-bin.zip
+RUN wget https://services.gradle.org/distributions/gradle-2.13-bin.zip
+RUN unzip -o gradle-2.13-bin.zip
+RUN mv gradle-2.13 /usr/local/gradle
+RUN rm gradle-2.13-bin.zip
 
 # Environment variables
 ENV ANDROID_HOME /usr/local/android-sdk
