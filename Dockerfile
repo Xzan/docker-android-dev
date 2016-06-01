@@ -31,7 +31,7 @@ RUN mv android-sdk-linux /usr/local/android-sdk
 RUN rm android-sdk_r24.4.1-linux.tgz
 
 # Install Android tools
-RUN echo y | /usr/local/android-sdk/tools/android update sdk --filter platform,tool,platform-tool,extra,add-on,addon-google_apis-google-19,addon-google_apis_x86-google-19,build-tools-23.0.1,build-tools-23.0.2,build-tools-23.0.3 --no-ui -a
+RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | /usr/local/android-sdk/tools/android update sdk --filter platform,tool,platform-tool,extra,add-on,addon-google_apis-google-19,addon-google_apis_x86-google-19,build-tools-23.0.1,build-tools-23.0.2,build-tools-23.0.3 --no-ui -a
 
 # Install Android NDK
 RUN wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
